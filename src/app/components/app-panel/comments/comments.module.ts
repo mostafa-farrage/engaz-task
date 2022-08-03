@@ -10,6 +10,7 @@ import { CommentsComponent } from './index/comments.component';
 export const routes: Routes = [
   {path:'all',component:CommentsComponent},
   {path:'control',component:ControlComponent},
+  
 ]
 
 @NgModule({

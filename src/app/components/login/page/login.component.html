@@ -1,0 +1,41 @@
+<div class="page-login">
+  <div class="row align-items-center justify-content-center w-100 m-0 h-100" >
+    <div class="col-12 col-md-6  col-lg-4">
+      <div class="form-login">
+        <div class="h-100 d-flex flex-column align-items-center justify-content-center">
+          <div class="d-flex justify-content-center engaz-logo">
+            <img src="/assets/img/engaz-logo.png">
+          </div>
+          <div class="invalid-user" *ngIf="invalidUser && !isRegister()">
+            <p>Invalid email or password</p>
+            <i class="uil uil-times ms-auto font-18 c-pointer" (click)="invalidUser=false"></i>
+          </div>
+          <div class="invalid-user" *ngIf="invalidUser && isRegister()" >
+            <p>Invalid email</p>
+            <i class="uil uil-times ms-auto font-18 c-pointer" (click)="invalidUser=false"></i>
+          </div>
+          <form [formGroup]="page.form" class=" mb-4 w-100">
+            <fieldset class="form-group">
+              <label for="basicInput">email</label>
+              <input type="text" class="form-control w-100" formControlName="email" placeholder="Enter your email"
+                (keyup)="enterEvent($event)" />
+            </fieldset>
+            <fieldset class="form-group position-relative">
+              <label for="basicInput" class="font-14">Password</label>
+              <input  [type]="fieldTextType ? 'text' : 'password'" class="form-control w-100" formControlName="Password" placeholder="Enter your Password"
+                (keyup)="enterEvent($event)" />
+                <p class="label-disc" (click)="toggleFieldTextType()"><i class="uil font-18 li-h1" [ngClass]="{'uil-eye-slash': !fieldTextType,'uil-eye': fieldTextType}"></i></p>
+            </fieldset>
+          </form>
+          <button class="btn login-btn w-100" *ngIf="!isRegister()" (click)="login()">
+            Sign In
+          </button>
+          <button class="btn login-btn w-100" *ngIf="isRegister()" (click)="register()">
+            Register Now
+          </button>
+          <p class="register" *ngIf="!isRegister()">if you don't have account , <a routerLink="/register">Register Now</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
